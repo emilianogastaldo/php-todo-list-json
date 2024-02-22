@@ -5,6 +5,7 @@ const app = createApp({
     name: 'Todo List',
     data: () => ({
         tasks: [],
+        inputTask: '',
     }),
     created() {
         axios.get(endpointPhp).then(res => {
