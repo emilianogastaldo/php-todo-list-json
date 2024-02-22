@@ -36,7 +36,7 @@
                 <ul class="list-group">
                     <li v-for="task in tasks" :key="task.id" class="list-group-item">{{task.text}}</li>
                 </ul>
-                <form @submit.prevent="addNewTask">
+                <form @submit.prevent="addNewTaskAxios">
                     <div class="input-group mt-3">
                         <input v-model.trim="inputTask" class="form-control" type="text" id="input-task"
                             placeholder="Inserisci task...">
