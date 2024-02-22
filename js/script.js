@@ -1,6 +1,5 @@
 const { createApp } = Vue;
-const endpointPhp = 'http://localhost/php-todo-list-json/api/tasks/index.php';
-const endpointJson = 'http://localhost/php-todo-list-json/api/tasks.json';
+const endpoint = 'http://localhost/php-todo-list-json/api/tasks/index.php';
 const app = createApp({
     name: 'Todo List',
     data: () => ({
@@ -8,7 +7,7 @@ const app = createApp({
         inputTask: '',
     }),
     created() {
-        axios.get(endpointPhp).then(res => {
+        axios.get(endpoint).then(res => {
             this.tasks = res.data;
         })
     },
@@ -23,9 +22,10 @@ const app = createApp({
             this.inputTask = '';
         },
         addNewTaskAxios() {
+            if (!this.inputTask) return;
             const data = { 'task': this.newTask };
-            const config = { headers: { 'Conten-Type': 'multipart/form-data' } };
-            axios.post(endpointPhp, data, config).then(res => { this.tasks = res.data });
+            const config = { headers: { 'Content-Type': 'multipart/form-data' } };
+            axios.post(endpoint, data, config).then(res => { this.tasks = res.data });
             this.inputTask = '';
         }
     }

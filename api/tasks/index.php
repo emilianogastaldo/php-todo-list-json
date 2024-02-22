@@ -12,6 +12,7 @@ if($new_task){
     $tasks = json_decode($json_data, true);
     $tasks[] = $new_task;
     $tasks = json_encode($tasks);
+    file_put_contents($source_path, $tasks);
 } 
 
 
