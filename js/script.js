@@ -27,7 +27,13 @@ const app = createApp({
             const config = { headers: { 'Content-Type': 'multipart/form-data' } };
             axios.post(endpoint, data, config).then(res => { this.tasks = res.data });
             this.inputTask = '';
-        }
+        },
+        deleteTask(id) {
+            // this.tasks = this.tasks.filter(task => task.id !== id);
+            const data = { 'id': id };
+            const config = { headers: { 'Content-Type': 'multipart/form-data' } };
+            axios.post(endpoint, data, config).then(res => { this.tasks = res.data });
+        },
     }
 });
 

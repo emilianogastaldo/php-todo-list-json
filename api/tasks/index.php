@@ -15,6 +15,17 @@ if($new_task){
     file_put_contents($source_path, $tasks);
 } 
 
+$delete_id = $_POST['id'] ?? '';
+if($delete_id){
+    $tasks = json_decode($json_data, true);
+
+    $tasks = array_filter($tasks, function($task) use($delete_id){
+        return $task['id'] !== $delete_id;
+    });
+
+    $tasks = json_encode($tasks);
+    file_put_contents($source_path, $tasks);
+}
 
 
 echo $tasks;

@@ -34,7 +34,10 @@
             </header>
             <main class="w-25 m-auto">
                 <ul class="list-group">
-                    <li v-for="task in tasks" :key="task.id" class="list-group-item">{{task.text}}</li>
+                    <li v-for="task in tasks" :key="task.id" class="list-group-item d-flex justify-content-between">
+                        <span>{{task.text}}</span> <button @click="deleteTask(task.id)" type="button" class="btn-close"
+                            aria-label="Close"></button>
+                    </li>
                 </ul>
                 <form @submit.prevent="addNewTaskAxios">
                     <div class="input-group mt-3">
