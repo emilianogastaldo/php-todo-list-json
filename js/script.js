@@ -11,6 +11,17 @@ const app = createApp({
         axios.get(endpointPhp).then(res => {
             this.tasks = res.data;
         })
+    },
+    computed: {
+        newTask() { return { id: Date.now(), text: this.inputTask, done: false } }
+    },
+    methods: {
+        addNewTask() {
+            if (!this.inputTask) return;
+
+            this.tasks.push(this.newTask);
+            this.inputTask = '';
+        }
     }
 });
 
