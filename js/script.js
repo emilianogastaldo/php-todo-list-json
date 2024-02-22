@@ -7,7 +7,7 @@ const app = createApp({
         tasks: [],
     }),
     created() {
-        axios.get(endpointJson).then(res => {
+        axios.get(endpointPhp).then(res => {
             this.tasks = res.data;
         })
     }
