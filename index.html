@@ -27,16 +27,24 @@
 
 <body>
     <div id="app">
-        <div class="container mt-5 text-center">
+        <div class="container mt-5">
 
-            <header>
+            <header class="text-center mb-5">
                 <h1>TO DO LIST</h1>
             </header>
-            <main>
-
+            <main class="w-25 m-auto">
+                <ul class="list-group">
+                    <li v-for="task in tasks" :key="task.id" class="list-group-item">{{task.text}}</li>
+                </ul>
+                <form @submit.prevent="">
+                    <div class="input-group mt-3">
+                        <input class="form-control" type="text" id="input-task" placeholder="Inserisci task...">
+                        <button class="btn btn-primary" type="submit">Inserisci</button>
+                    </div>
+                </form>
             </main>
             <footer>
-
+                <a href="http://localhost/">Torna indietro</a>
             </footer>
         </div>
     </div>
