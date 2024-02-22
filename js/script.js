@@ -21,6 +21,12 @@ const app = createApp({
 
             this.tasks.push(this.newTask);
             this.inputTask = '';
+        },
+        addNewTaskAxios() {
+            const data = { 'task': this.newTask };
+            const config = { headers: { 'Conten-Type': 'multipart/form-data' } };
+            axios.post(endpointPhp, data, config).then(res => { this.tasks = res.data });
+            this.inputTask = '';
         }
     }
 });
