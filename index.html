@@ -34,9 +34,10 @@
             </header>
             <main class="w-25 m-auto">
                 <ul class="list-group">
-                    <li v-for="task in tasks" :key="task.id" class="list-group-item d-flex justify-content-between">
-                        <span>{{task.text}}</span> <button @click="deleteTask(task.id)" type="button" class="btn-close"
-                            aria-label="Close"></button>
+                    <li v-for="task in tasks" :key="task.id" @click="toggleDone(task.id)"
+                        class="list-group-item d-flex justify-content-between">
+                        <span :class="{'text-decoration-line-through': task.done}">{{task.text}}</span> <button @click="
+                            deleteTask(task.id)" type="button" class="btn-close" aria-label="Close"></button>
                     </li>
                 </ul>
                 <form @submit.prevent="addNewTaskAxios">
